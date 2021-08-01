@@ -2,6 +2,8 @@ alphaarr1 = [];
 alphaindex1 = [];
 galphaarr1 = [];
 galphaindex1 = [];
+const element = document.getElementById("enggermantable");
+
 function getalpha(getalphabet)
 {
 	
@@ -22,53 +24,34 @@ function getalpha(getalphabet)
 	if(alphaindex1.length == 0)
 	{
 		alpharowmodul = 1;
-		document.getElementById('alphaletter').innerHTML = 'Sorry, No word starts with <b>' +getalphabet+'</b>';
-		document.getElementById('alphaletter').style.display = 'block';
+		const para = document.createElement("p");
+		const node = document.createTextNode("Sorry, No English Words Starts with "+ getalphabet.toUpperCase());
+		para.appendChild(node);
+const element = document.getElementById("enggermantable");
+		element.appendChild(para);
+			ggetalpha(getalphabet);
 	}
 	else
 	{
-		document.getElementById("alphaletter").style.display = "block";
-		document.getElementById("alphaletter").innerHTML = "English Words that starts with Letter <b>"+getalphabet.toUpperCase()+" </b>";
-		console.log('e');
-		generate_table();
-	}
-	
-	for (galphait = 0;galphait < Germanworddic.length; galphait++)
-	{
-		gstralpha= Germanworddic[galphait];
 		
-		if(gstralpha.substring(0, 1).toUpperCase() == getalphabet.toUpperCase())
-		{
-			console.log(gstralpha);
-		galphaarr1.push(gstralpha);
-		galphaindex1.push(galphait);
-		}
+		const para = document.createElement("p");
+		const node = document.createTextNode("English Words Starts with "+ getalphabet.toUpperCase());
+		para.appendChild(node);
+		const element = document.getElementById("enggermantable");
+		element.appendChild(para);
+		
+		generate_table(getalphabet);
 	}
-	galphaarr1.sort();
-	console.log(galphaarr1);
-	console.log(galphaindex1);
-	
-	if(galphaindex1.length == 0)
-	{
-		galpharowmodul = 1;
-		document.getElementById('galphaletter').innerHTML = 'Sorry, No German word starts with <b>' +getalphabet+'</b>';
-		document.getElementById('galphaletter').style.display = 'block';
-	}
-	else
-	{
-		document.getElementById("galphaletter").style.display = "block";
-		document.getElementById("galphaletter").innerHTML = "German Words that starts with Letter <b>"+getalphabet.toUpperCase()+" </b>";
-		console.log('g');
-		generate_tableg();
-	}
+
 	
 }
+
 
 var colalpha = 4;
 var curalpha = 0;
 
 var alpharowmodul = 1;
-function generate_table() 
+function generate_table(egetalphabet) 
 {
 	
 	var alpharow = Math.ceil((alphaindex1.length)/4);
@@ -126,7 +109,7 @@ function generate_table()
 	  var updatesearchval = "updatesearch('"+alphaarr1[curalpha]+"')";
 	  console.log(updatesearchval);
       cell.setAttribute('onclick', updatesearchval);
-      cell.setAttribute("style", "color:black; border:1px solid grey; font-size:16px; cursor:pointer;");
+      cell.setAttribute("style", "color:black; border:1px solid grey; font-size:13px; cursor:pointer; width:25%; overflow: hidden;");
 	  var hypercell = "https://engineerthoughts.com/dict/index?"+alphaarr1[curalpha]
 
       row.appendChild(cell);
@@ -140,12 +123,55 @@ function generate_table()
   // put the <tbody> in the <table>
   tbl.appendChild(tblBody);
   // appends <table> into <body>
-  body.appendChild(tbl);
+  const element = document.getElementById("enggermantable");
+    element.appendChild(tbl);
+  //body.appendChild(tbl);
   // sets the border attribute of tbl to 2;
   tbl.setAttribute("width", "90%");
   tbl.setAttribute("align", "center");
+  tbl.setAttribute("style", "table-layout: fixed;");
+
+  	ggetalpha(egetalphabet);
 
 }
+
+function ggetalpha(ggetalphabet)
+{
+for (galphait = 0;galphait < Germanworddic.length; galphait++)
+	{
+		gstralpha= Germanworddic[galphait];
+		
+		if(gstralpha.substring(0, 1).toUpperCase() == ggetalphabet.toUpperCase())
+		{
+			console.log(gstralpha);
+		galphaarr1.push(gstralpha);
+		galphaindex1.push(galphait);
+		}
+	}
+	galphaarr1.sort();
+	console.log(galphaarr1);
+	console.log(galphaindex1);
+	
+	if(galphaindex1.length == 0)
+	{
+		galpharowmodul = 1;
+		const para = document.createElement("p");
+		const node = document.createTextNode("Sorry No German Words Starts with "+ ggetalphabet.toUpperCase());
+		para.appendChild(node);
+		const element = document.getElementById("enggermantable");
+		element.appendChild(para);
+	}
+	else
+	{
+		const para = document.createElement("p");
+		const node = document.createTextNode("German Words Starts with "+ ggetalphabet.toUpperCase());
+		para.appendChild(node);
+		const element = document.getElementById("enggermantable");
+		element.appendChild(para);
+		generate_tableg();
+	}
+}
+
 
 var gcolalpha = 4;
 var gcuralpha = 0;
@@ -209,7 +235,7 @@ function generate_tableg()
 	  var updatesearchval = "updatesearch('"+galphaarr1[gcuralpha]+"')";
 	  console.log(updatesearchval);
       cell.setAttribute('onclick', updatesearchval);
-      cell.setAttribute("style", "color:black; border:1px solid grey; font-size:11px; cursor:pointer;word-wrap:break-word;");
+      cell.setAttribute("style", "color:black; border:1px solid grey; font-size:13px; cursor:pointer; width:25%; overflow: hidden;");
 	  var hypercell = "https://engineerthoughts.com/dict/index?"+galphaarr1[gcuralpha]
 
       row.appendChild(cell);
@@ -222,12 +248,15 @@ function generate_tableg()
 
   // put the <tbody> in the <table>
   gtbl.appendChild(gtblBody);
+  const element = document.getElementById("enggermantable");
+  element.appendChild(gtbl);
   // appends <table> into <body>
-  body.appendChild(gtbl);
+  //body.appendChild(gtbl);
   // sets the border attribute of tbl to 2;
   gtbl.setAttribute("width", "90%");
   gtbl.setAttribute("align", "center");
-  gtbl.setAttribute("align", "center");
+  gtbl.setAttribute("style", "table-layout: fixed;");
+  
 
 }
 function updatesearch(getval123)
