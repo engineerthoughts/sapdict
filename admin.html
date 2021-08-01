@@ -1,0 +1,172 @@
+<!Doctype html>
+<head>
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<meta name="description" content="English German Dictionary Admin page">
+	<meta name="keywords" content="English German Dictionary, SAP Dict, SAPDict">
+	<meta name="author" content="engineerthoughts">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>SAP Dict</title>
+	<link rel="shortcut icon" href="images/sapdictlogo.PNG">
+	<link rel="stylesheet" type="text/css" href="css/sapdictcss_index.css">	
+	<script src="js/sapdictjs_navbar.js"></script>
+		
+</head>
+
+<body>
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-database.js"></script>
+
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+		 https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script src="https://www.gstatic.com/firebasejs/8.0.2/firebase-analytics.js"></script>
+	<script src="js/firebaselog.js"></script>
+		
+	<!--	<div class="indextop">
+			<img class="innerindextop" src="images/sapdictlogo.PNG" width='60px', height='60px'></img>
+			<span class="innerindextop">SAP DICT</span>
+		</div>-->
+	
+		<div class="topnav" id="myTopnav">
+			<a href="index.html">HOME</a>
+			<a href="#about">ABOUT US</a>
+			<a href="#contact">DISCLAIMER</a>
+			<a href="admin.html" id="hiadmin" class="active">ADMIN LOGIN</a>
+			<a href="javascript:void(0);" class="icon" onclick="topnavbar()">☰</a>
+		</div>
+		
+	<center>
+	<div style="margin-top:50px;" id="userpwddetail">
+		<span>Enter the UserName:</span>
+		<input type="text" id="username" style=" padding: 5px 5px;font-size:16px;"required><br>
+		<span>Enter the PassWord :</span>
+		<input type="password" id="password" style=" padding: 5px 5px;font-size:16px;"required><br><br>
+		<button onclick="validate();" id="Adminsub">Submit</button>
+		<p id="txtmsgblank" style="display:none">USERNAME / PASSWORD IS BLANK.</p>
+		<p id="txtmsgcrct" style="display:none">user and pwd is correct</p>
+		<p id="txtmsgwrong" style="display:none">USERNAME / PASSWORD IS INCORRECT. PLEASE TRY AGAIN.</p>
+	</div>
+	</center>
+	<center>
+	<div id="addvalfiba" style="display:none">
+	<h3>Add new Word</h3>
+		<span>Enter the English Word :</span>
+		<input type="text" id="engwordaddtxt" style=" padding: 5px 5px;font-size:16px;"required><br>
+		<span>Enter the German Word :</span>
+		<input type="text" id="gerwordaddtxt" style=" padding: 5px 5px;font-size:16px;"required><br><br>
+		<button onclick="checknullvalfiba();" id="admincheckadd">Check</button>
+		<button onclick="insertintofiba();" id="adminaddval" style="background-color:Grey" disabled>Add word</button>
+		<p id="txtmsgaddblank" style="display:none">ENGLISH / GERMAN WORD IS BLANK</p>
+		<p id="successmsgadd" style="display:none">Your Record is Successfully added !!</p>
+	</div>
+	</center>
+</body>
+
+<script>
+	var d = new Date();
+	var year = d.getFullYear();
+	var month = d.getMonth() + 1;
+	var date = d.getDate();
+	var time = d.getTime();
+	var strtime = time.toString();
+	var valyear = year.toString();
+	var valmon = month.toString();
+	var pwdvalidate = valyear + valmon + date + "dict";
+	
+	function validate()
+	{
+		var un = document.getElementById ("username").value;
+		var pwd = document.getElementById ("password").value;
+		console.log(un);
+		console.log(pwd);
+		
+		if(un == null || un == "")
+		{
+			document.getElementById ("txtmsgblank").style.display = "block";
+			document.getElementById ("txtmsgcrct").style.display = "none";
+			document.getElementById ("txtmsgwrong").style.display = "none";
+		}
+		else if(pwd == null || pwd == "")
+		{
+			document.getElementById ("txtmsgblank").style.display = "block";
+			document.getElementById ("txtmsgcrct").style.display = "none";
+			document.getElementById ("txtmsgwrong").style.display = "none";
+		}
+		if(pwd != "")
+		{
+			
+			if(un != "")
+			{
+				console.log("not null");
+				document.getElementById ("txtmsgblank").style.display = "none";
+				document.getElementById ("txtmsgwrong").style.display = "none";
+				document.getElementById ("txtmsgcrct").style.display = "none";
+				if(un == "user")
+				{
+					if(pwd == pwdvalidate)
+					{	
+						document.getElementById ("txtmsgcrct").style.display = "block";
+						document.getElementById ("addvalfiba").style.display = "block";
+						document.getElementById ("userpwddetail").style.display = "none";
+						document.getElementById("hiadmin").innerHTML = "HI ADMIN !!";
+					}
+					else
+					{
+						document.getElementById ("txtmsgwrong").style.display = "block";
+						document.getElementById ("txtmsgcrct").style.display = "none";
+					}
+				}
+				else
+				{
+					document.getElementById ("txtmsgwrong").style.display = "block";
+				}
+			}
+		}
+	}	
+	
+	function insertintofiba()
+	{
+		console.log("Insert Alert");
+		var d = new Date();
+		var time = d.getTime();
+		var strtime = time.toString();
+		
+		var getengwordaddtxt = document.getElementById("engwordaddtxt").value;
+		var getgerwordaddtxt = document.getElementById("gerwordaddtxt").value;
+		const database = firebase.database();
+
+		database.ref('input'+getengwordaddtxt+getgerwordaddtxt).set
+		({
+		englishvalue: getengwordaddtxt,
+		germanvalue: getgerwordaddtxt
+		});
+		document.getElementById("adminaddval").disabled = true;
+	}
+	function checknullvalfiba()
+	{
+		var getengwordaddtxt = document.getElementById("engwordaddtxt").value;
+		var getgerwordaddtxt = document.getElementById("gerwordaddtxt").value;
+		
+		if(getengwordaddtxt == null || getengwordaddtxt == "")
+		{
+			document.getElementById ("txtmsgaddblank").style.display = "block";
+		}
+		else if(getgerwordaddtxt == null || getgerwordaddtxt == "")
+		{
+			document.getElementById ("txtmsgaddblank").style.display = "block";
+
+		}
+		if(getengwordaddtxt != "")
+		{
+			
+			if(getgerwordaddtxt != "")
+			{
+				document.getElementById("adminaddval").disabled = false;
+				document.getElementById ("adminaddval").style.backgroundColor = "#581845";
+			}
+		}
+	}
+</script>
+</html>

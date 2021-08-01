@@ -1,0 +1,60 @@
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<body>
+	<div class="container">
+		  <h1>Fill google form via ajax</h1>
+
+		  <div id="feedback"></div>
+
+		  <form method="post" id="contact-form">
+			<div class="form-group">
+			  <label>Name: *</label>
+			  <input type="text" class="form-control" id="form-name" placeholder="Name">
+			</div>
+			<div class="form-group">
+			  <label>Email: *</label>
+			  <input type="text" class="form-control" id="form-email" placeholder="Email">
+			</div>
+    </div>
+    <button type="submit" class="btn btn-default">
+      Send message
+    </button>
+  </form>
+  <br>
+  <br>
+  
+</div>
+	<script>
+		// Process contact form
+		$('#contact-form').submit(function(event) {
+		  event.preventDefault();
+		  //$('#feedback').html('');
+		  setTimeout(function() {
+			// Get data
+			var data = {
+			  'entry.1569258631': '123',
+			  'entry.407126866': '234'
+			  //'entry.1569258631': $('#form-name').val(),
+			  //'entry.407126866': $('#form-email').val()
+			};
+
+			// Validate form
+			var formSuccess = true;
+
+			if (formSuccess) {
+			  // Send request
+			  $.ajax({
+				url: 'https://docs.google.com/forms/d/e/1FAIpQLScT5eahd-me4vPflbwFGIJuRUh0kS_dXFC1Hpu38Lo7i8BKJQ/formResponse',
+				type: 'POST',
+				crossDomain: true,
+				dataType: "xml",
+				data: data
+			  });
+			}
+		  }, 300);
+		});
+
+	</script>
+	</body>
+
+</html>

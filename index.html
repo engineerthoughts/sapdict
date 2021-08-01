@@ -1,0 +1,221 @@
+<!Doctype html>
+<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<meta name="description" content="English German Dictionary">
+		<meta name="keywords" content="English German Dictionary, SAP Dict, SAPDict">
+		<meta name="author" content="engineerthoughts">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>SAP Dict</title>
+		<link rel="shortcut icon" href="images/sapdictlogo.PNG">
+		<link rel="stylesheet" type="text/css" href="css/sapdictcss_index.css">	
+		<!--<link rel="stylesheet" type="text/css" href="css/textboxsearch.css">-->
+		<link rel="stylesheet" type="text/css" href="css/autocomplete.css">
+		<script src="js/sapdictjs_navbar.js"></script>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+		
+	</head>
+	<body>
+		
+	<center>	
+		<!--<div class="indextop">
+			<img class="innerindextop" src="images/sapdictlogo.PNG" width='60px', height='60px'></img>
+			<span class="innerindextop">SAP DICT</span>
+		</div>-->
+	
+		<div class="homeindexmenuclass" id="idhomeindexmenu">
+			<a href="index.html" class="active">HOME</a>
+			<a href="question.html">GERMAN QUIZ</a>
+			<a href="#about">ABOUT US</a>
+			<a href="#contact">DISCLAIMER</a>
+			<!--<a href="admin.html" id="hiadmin">ADMIN LOGIN</a>-->
+			<a href="javascript:void(0);" class="icon" onclick="topnavbar()">☰</a>
+		</div>
+		
+
+		<center>	
+		<div class="autocomplete" style="margin-top:30px;">
+		
+		<form method="post" id="contact-form">
+			<input id="myInput" class="inputtext" type="text" name="myCountry" placeholder="Type English Word to Search" autocomplete='off'></input>
+			<span>
+			<button type = "submit" id = "gobuttonid" class="GoButton" onclick="engtogerfun()">SEARCH 🔍</button></span>
+		</form>
+		</div>
+		</center>
+		
+		<!-- <script src="js/wordsearchengtoger.js"></script> -->
+		<script src="js/firebasedict.js"></script>
+		<script src="js/autocompletejs.js"></script>
+		<script src="js/engwordslistjs.js"></script>
+		<script src="js/gerwordslistjs.js"></script>
+		<script src="js/wordsdict.js"></script>
+		<script src="js/alphaval.js"></script>
+		
+		
+		
+		<center>
+		<div id="Dicresultsmain" style="display:none"><u style="font-size:18px">Search Results</u>
+			<table id="Dicresults" style="margin-top:-2px">
+			  <tr>
+				<th class="tablerowsno" style="text-align:center">S.NO.</th>
+				<th class="tableengger">ENGLISH<span style="margin-left:15px"><img src="images/eng.png" width='50px', height='30px'></img></span></th> 
+				<th class="tableengger">GERMAN<span style="margin-left:15px"><img src="images/ger.png" width='50px', height='30px'></img></span></th> 
+			  </tr>
+			  <tr>
+				<td class="tablerowsno">1</td>
+				<td id="EnglishwordTab1" >-</td>
+				<td id="GermanwordTab1">-</td>
+			  </tr>
+			</table>
+		</div>
+		<p id="disclaimer" style="display:none">Don't Worry We will update the Entered Word's Translation into Dictionary Soon</p>
+		<button id ="gobackhome" style="display:none">⇐ Go Back !!</button>
+		</center>
+		<br>
+		
+	<center>
+<div id = "listtablehide"><u style="font-size:18px">List of Words</u>	
+<table>
+<tr>
+	<td class="alphav" onclick="getalpha('a')">A</td>
+	<td class="alphav" onclick="getalpha('b')">B</td>
+	<td class="alphav" onclick="getalpha('c')">C</td>
+	<td class="alphav" onclick="getalpha('d')">D</td>
+	<td class="alphav" onclick="getalpha('e')">E</td>
+	<td class="alphav" onclick="getalpha('f')">F</td>
+	<td class="alphav" onclick="getalpha('g')">G</td>
+	<td class="alphav" onclick="getalpha('h')">H</td>
+	<td class="alphav" onclick="getalpha('i')">I</td>
+	<td class="alphav" onclick="getalpha('j')">J</td>
+	<td class="alphav" onclick="getalpha('k')">K</td>
+	<td class="alphav" onclick="getalpha('l')">L</td>
+	<td class="alphav" onclick="getalpha('m')">M</td>
+	<td class="alphav" onclick="getalpha('n')">N</td>
+	<td class="alphav" onclick="getalpha('o')">O</td>
+	<td class="alphav" onclick="getalpha('p')">P</td>
+	<td class="alphav" onclick="getalpha('q')">Q</td>
+	<td class="alphav" onclick="getalpha('r')">R</td>
+	<td class="alphav" onclick="getalpha('s')">S</td>
+	<td class="alphav" onclick="getalpha('t')">T</td>
+	<td class="alphav" onclick="getalpha('u')">U</td>
+	<td class="alphav" onclick="getalpha('v')">V</td>
+	<td class="alphav" onclick="getalpha('w')">W</td>
+	<td class="alphav" onclick="getalpha('x')">X</td>
+	<td class="alphav" onclick="getalpha('y')">Y</td>
+	<td class="alphav" onclick="getalpha('z')">Z</td>
+</tr>
+</table>
+	<table id="TableList" style="margin-top:-2px"> 
+		<tr>
+			<th class="tablerowsno" style="text-align:center">S.NO.</th>
+			<th class="tableengger">ENGLISH<span style="margin-left:15px"><img src="images/eng.png" width='50px', height='30px'></img></span></th> 
+			<th class="tableengger">GERMAN<span style="margin-left:15px"><img src="images/ger.png" width='50px', height='30px'></img></span></th> 
+		</tr>
+		<tr id="row1">
+			<td id="row1col1" class="tablerowsno"></td>
+			<td id="row1col2"></td>
+			<td id="row1col3"></td>
+		</tr>
+		<tr id="row2">
+			<td id="row2col1" class="tablerowsno"></td>
+			<td id="row2col2"></td>
+			<td id="row2col3"></td>
+		</tr>
+		<tr id="row3">
+			<td id="row3col1" class="tablerowsno"></td>
+			<td id="row3col2"></td>
+			<td id="row3col3"></td>
+		</tr>
+		<tr id="row4">
+			<td id="row4col1" class="tablerowsno"></td>
+			<td id="row4col2"></td>
+			<td id="row4col3"></td>
+		</tr>
+		<tr id="row5">
+			<td id="row5col1" class="tablerowsno"></td>
+			<td id="row5col2"></td>
+			<td id="row5col3"></td>
+		</tr>
+		<tr id="row6">
+			<td id="row6col1" class="tablerowsno"></td>
+			<td id="row6col2"></td>
+			<td id="row6col3"></td>
+		</tr>
+		<tr id="row7">
+			<td id="row7col1" class="tablerowsno"></td>
+			<td id="row7col2"></td>
+			<td id="row7col3"></td>
+		</tr>
+		<tr id="row8">
+			<td id="row8col1" class="tablerowsno"></td>
+			<td id="row8col2"></td>
+			<td id="row8col3"></td>
+		</tr>
+		<tr id="row9">
+			<td id="row9col1" class="tablerowsno"></td>
+			<td id="row9col2"></td>
+			<td id="row9col3"></td>
+		</tr>
+		<tr id="row10">
+			<td id="row10col1" class="tablerowsno"></td>
+			<td id="row10col2"></td>
+			<td id="row10col3"></td>
+		</tr>
+	</table>
+	
+	<div>
+		<table>
+		<tr>
+			<td class="pgclass" id="pgprevious" style="display:none" onclick="decsetvalue();">◄</td>
+			<td class="pgclass" id="pgno1" style="font-size:18px;font-weight:bolder;color:green" onclick="sendval('pgno1');displaytable();updatetable();ucolor('pgno1');">1</td>
+			<td class="pgclass" id="pgno2" onclick="sendval('pgno2');displaytable();updatetable();ucolor('pgno2');">2</td>
+			<td class="pgclass" id="pgno3" onclick="sendval('pgno3');displaytable();updatetable();ucolor('pgno3');">3</td>
+			<td class="pgclass" id="pgno4" onclick="sendval('pgno4');displaytable();updatetable();ucolor('pgno4');">4</td>
+			<td class="pgclass" id="pgno5" onclick="sendval('pgno5');displaytable();updatetable();ucolor('pgno5');">5</td>
+			<td class="pgclass" id="pgno6" onclick="sendval('pgno6');displaytable();updatetable();ucolor('pgno6');">6</td>
+			<td class="pgclass" id="pgno7" onclick="sendval('pgno7');displaytable();updatetable();ucolor('pgno7');">7</td>
+			<td class="pgclass" id="pgno8" onclick="sendval('pgno8');displaytable();updatetable();ucolor('pgno8');">8</td>
+			<td class="pgclass" id="pgno9" onclick="sendval('pgno9');displaytable();updatetable();ucolor('pgno9');">9</td>
+			<td class="pgclass" id="pgno10" onclick="sendval('pgno10');displaytable();updatetable();ucolor('pgno10')">10</td>
+			<td class="pgclass" id="pgnext" onclick="incsetvalue();">►</td>
+			<button id="pgvalinput" style="display:none" value=1></button>
+		</tr>
+		</table>
+	</div>
+	
+	<div style="margin-top:10px;display:none;">
+		<button onclick="displaytable();myFunctionfirst();firstFunction();" id="incdec">First &nbsp;</button>		
+		<button onclick="displaytable();myFunctiondec();updatetable();" id="dec">⫷ &nbsp; </button>
+		<input type="number" id="myLevel" min="1" value="1" style="border: 1px solid #ccc;border-radius:4px;font-size:12px;width:50px;height:16px;text-align:center;box-sizing: border-box;" readonly></input>
+		<span id="totalpagesdisp">	</span>
+		<button onclick="displaytable();myFunctioninc();updatetable();" id="inc">&nbsp; ⫸</button>
+		<button onclick="displaytable();myFunctionlast();lastfunction();" id="incdec">Last &nbsp;</button>
+	</div>	
+</div>	
+
+<p id="alphaletter" style="display:none">Letter Starts with A</p>
+<p id="galphaletter" style="display:none">Letter Starts with A</p>
+<p id="sorryalphaletter" style="display:none">Sorry, No word starts with </p>
+		</center>
+	<script>
+		function displaytable()
+		{
+			for (var abc = 0; abc < 10; abc++)
+			{
+				var idgenrowcol1 = "row".concat(abc+1);
+				document.getElementById(idgenrowcol1).style.display="none";
+				var idgenrowcol2 = "row".concat(abc+1);
+				document.getElementById(idgenrowcol2).style.display="none";		
+				var idgenrowcol3 = "row".concat(abc+1);
+				document.getElementById(idgenrowcol3).style.display="none";
+			}
+		}
+	</script>
+	<script src="js/tablelistJS.js"></script>	
+
+	</body>
+	</center>
+</html>

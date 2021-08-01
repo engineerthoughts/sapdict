@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to display the position of the element "Apple":</p>
+
+<button onclick="myFunction()">Try it</button>
+<input id = "myInput"></input>
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  var fruits = ["Banana", "Orange", "APPLE", "Mango"];
+  var vegetable = ["tomato", "okra", "APPLE", "Mango"];
+  var inputVal = document.getElementById("myInput").value;
+  var outpval = -1;
+  for(inc=0;inc<=fruits.length;inc++)
+  {
+	console.log(inc);
+    var fruitupp = fruits[inc].toUpperCase();
+    if(fruitupp == inputVal.toUpperCase())
+    {outpval=inc;console.log(outpval);document.getElementById("demo").innerHTML = vegetable[outpval];}
+  } 
+  
+}
+</script>
+
+<p><b>Note:</b> The indexOf method was introduced in JavaScript 1.6, and does not work in Internet Explorer 8 and earlier versions.</p>
+
+</body>
+</html>

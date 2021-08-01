@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<body>
+<button onclick="abc()">update url</button>
+	<script>
+	var tab = window.location.href.split('?')[1];
+	console.log(typeof tab);
+	if (typeof tab === "undefined")
+	{
+	console.log("undefined true");
+	}
+	else
+	{
+	console.log("string true");
+	}
+	function abc()
+	{
+		//window.history.pushState('www.engineerthoughts.com/url.html/', '?abc');
+	    window.history.pushState({"html":"","pageTitle":""},"", "?var");
+		console.log("url");
+		var key = "key 223 4556 56";
+		var repkey = key.replace(/\s+/g,"_");
+		console.log(repkey);
+	}
+	</script>
+</body>
+</html>
