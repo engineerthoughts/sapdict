@@ -2,6 +2,8 @@ var listeninput1 = document.getElementById("myInput");
 listeninput1.addEventListener("keydown", function (e) {
     if (e.keyCode === 13) {  //checks whether the pressed key is "Enter"
         engtogerfun();
+		wordsearchs();
+		
     }
 });
 
@@ -16,6 +18,12 @@ window.onload = function()
 	  var repundtospace = readurl.replace(/_/g, ' ');
 	  document.getElementById("myInput").value = repundtospace;
 	  engtogerfun();
+	  console.log(123);
+		if (repundtospace != "")
+		{
+	  wordsearchs();
+		}
+	  
   }
   if (readurl == "" || (typeof readurl === "undefined"))
   {
@@ -42,6 +50,7 @@ window.onload = function()
 	else
 	{
 	document.getElementById("Dicresultsmain").style.display = "block";
+	wordsearchs();
 	}
 	
 
@@ -77,7 +86,7 @@ window.onload = function()
 		{
 			document.getElementById("GermanwordTab1").innerHTML = "--Nicht verfügbar 😞 --";
 			document.getElementById("EnglishwordTab1").innerHTML = "--Not Available 😞 --";		
-			document.getElementById("disclaimer").style.display = "block";
+			//document.getElementById("disclaimer").style.display = "block";
 			//document.getElementById("listtablehide").style.display = "none";
 		}
 	  }
@@ -187,7 +196,7 @@ window.onload = function()
 		{
 			document.getElementById("GermanwordTab1").innerHTML = "--Nicht verfügbar 😞 --";
 			document.getElementById("EnglishwordTab1").innerHTML = "--Not Available 😞 --";		
-			document.getElementById("disclaimer").style.display = "block";
+			//document.getElementById("disclaimer").style.display = "block";
 			//document.getElementById("listtablehide").style.display = "none";
 		}
 	  }
@@ -396,7 +405,7 @@ function engtogerfun()
   }
   else if (readurl != "" || (typeof readurl !== "undefined"))
   {
-	  //document.getElementById("listtablehide").style.display = "none";
+	  document.getElementById("listtablehide").style.display = "none";
 	  console.log("not empty");
   }
 

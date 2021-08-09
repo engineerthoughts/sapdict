@@ -17,16 +17,46 @@ function autocomplete(inp, arr) {
       /*append the DIV element as a child of the autocomplete container:*/
       this.parentNode.appendChild(a);
       /*for each item in the array...*/
-      for (i = 0; i < arr.length; i++) {
+	  var itemp = 0;
+	  var jtemp = 0;
+	  var englishdictsearchjs = [];
+	  var germandictsearchjs = [];
+	  var englishdictindexsearchjs = [];
+	  var germandictindexsearchjs = [];
+      for (i = 0; i < arr.length; i++) 
+	  {
+		/* console.log(arr[i].substr(0, val.length).toUpperCase());
+		console.log(val); */
+		
         /*check if the item starts with the same letters as the text field value:*/
-        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+        if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase() && itemp < 4) 
+		{
+			/* englishdictsearchjs.push(Englishworddic[i]);
+			englishdictindexsearchjs.push(i);
+			germandictsearchjs.push(Germanworddic[i-(Englishworddic.length)]);
+			germandictindexsearchjs.push(i); */
+			
+			console.log('lesser than 4');
+			//console.log(englishdictsearchjs);
           /*create a DIV element for each matching element:*/
           b = document.createElement("DIV");
           /*make the matching letters bold:*/
-          b.innerHTML = "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+		  if(i < Englishworddic.length)
+		  {
+          b.innerHTML = "<i>EN &nbsp</i>"+"<strong>" + arr[i].substr(0, val.length) + "</strong>";
           b.innerHTML += arr[i].substr(val.length);
           /*insert a input field that will hold the current array item's value:*/
           b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+		  }
+		  else 
+		 {
+          b.innerHTML = "<i>DE &nbsp</i>"+"<strong>" + arr[i].substr(0, val.length) + "</strong>";
+          b.innerHTML += arr[i].substr(val.length);
+          /*insert a input field that will hold the current array item's value:*/
+          b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+		  }  
+		  itemp = itemp +1;
+		  b.setAttribute("style", "text-align:left");
           /*execute a function when someone clicks on the item value (DIV element):*/
           b.addEventListener("click", function(e) {
               /*insert the value for the autocomplete text field:*/
@@ -35,10 +65,35 @@ function autocomplete(inp, arr) {
               (or any other open lists of autocompleted values:*/
               closeAllLists();
           });
+		  b.addEventListener("click", wordsearchs, false);
           a.appendChild(b);
         }
+		else if (arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase() && itemp >= 4 && jtemp < 1) 
+		{
+			englishdictsearchjs.push(Englishworddic[i]);
+			jtemp = jtemp +1;
+			console.log('greater4');
+          /*create a DIV element for each matching element:*/
+          c = document.createElement("DIV");
+          /*insert a input field that will hold the current array item's value:*/
+          c.innerHTML = "more";
+		  c.setAttribute("style", "text-align:left");
+		  c.addEventListener("click", wordsearchs, false);
+          c.addEventListener("click", function(e) 
+		  {
+              /*insert the value for the autocomplete text field:*/
+              inp.value = this.getElementsByTagName("input")[0].value;
+              /*close the list of autocompleted values,
+              (or any other open lists of autocompleted values:*/
+              closeAllLists();
+          });
+          a.appendChild(c);
+        }
+		/* console.log(englishdictsearchjs);
+		console.log(germandictsearchjs); */
       }
   });
+  
   /*execute a function presses a key on the keyboard:*/
   inp.addEventListener("keydown", function(e) {
       var x = document.getElementById(this.id + "autocomplete-list");

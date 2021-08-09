@@ -13,6 +13,8 @@
   top: 100%;
   left: 0;
   right: 0;
+  width:72%;
+  margin-left:13%;
 }
 
 .autocomplete-items div {
@@ -47,4 +49,9 @@ input[type=text] {
 
 @media screen and (max-width: 600px) {
   input[type=text]{width: 90%;}
-  .autocomplete {width:90%;}}
+  .autocomplete {width:90%;}
+  .autocomplete-items {
+
+  width:95%;
+  margin-left:0px;
+}}

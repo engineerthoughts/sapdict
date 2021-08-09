@@ -74,18 +74,42 @@ body {
   padding: 8px;
 }
 
-#TableList tr:nth-child(even){background-color: #f2f2f2;}
+#TableList tr:nth-child(even){background-color: #CAD6F4;}
 
-#TableList tr:hover {background-color: #ddd;}
+#TableList tr:hover {background-color: #dedcbf;}
 
 #TableList th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #272536;
+  /* background-color: #272536; */
+  background-color: #7092BE;
   color: white;
 }
 /*Table CSS ENDS Here*/
+
+#TableLista {
+  margin-top:20px;
+  border-collapse: collapse;
+  width: 60%;
+}
+
+#TableLista td, #TableLista th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#TableLista tr:nth-child(even){background-color: #CAD6F4;}
+
+#TableLista tr:hover {background-color: #dedcbf;}
+
+#TableLista th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #7092BE;
+  color: white;
+}
 .tablerowsno{
   text-align:center;
   width: 75px; 
@@ -144,8 +168,8 @@ body {
   padding-top: 8px;
   padding-bottom: 6px;
 }
-#TableList {width:100%;font-size:14px;}
-#TableList th,#TableList td {
+#TableList, #TableLista {width:100%;font-size:14px;}
+#TableList th,#TableList td, #TableLista th, #TableLista td {
   padding-top: 8px;
   padding-bottom: 6px;
 }
