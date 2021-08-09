@@ -41,7 +41,7 @@
 		<form method="post" id="contact-form">
 			<input id="myInput" class="inputtext" type="text" name="myCountry" placeholder="Type English Word to Search" autocomplete='off'></input>
 			<span>
-			<button type = "submit" id = "gobuttonid" class="GoButton" onclick="engtogerfun()">SEARCH 🔍</button></span>
+			<button type = "submit" id = "gobuttonid" class="GoButton" onclick="engtogerfun();wordsearchs();">SEARCH 🔍</button></span>
 		</form>
 		</div>
 		</center>
@@ -53,11 +53,12 @@
 		<script src="js/gerwordslistjs.js"></script>
 		<script src="js/wordsdict.js"></script>
 		<script src="js/alphaval.js"></script>
+
 		
 		
 		
 		<center>
-		<div id="Dicresultsmain" style="display:none"><u style="font-size:18px">Search Results</u>
+		<div id="Dicresultsmain" style="display:none"><u style="font-size:18px">Exact Match</u>
 			<table id="Dicresults" style="margin-top:-2px">
 			  <tr>
 				<th class="tablerowsno" style="text-align:center">S.NO.</th>
@@ -200,6 +201,79 @@
 
 	</div>
 </a>
+
+<div id="searchtable" style="display:none"><u style="font-size:18px">Similar Match</u>
+
+	<table id="TableLista" style="margin-top:-2px"> 
+		<tr>
+			<th class="tablerowsno" style="text-align:center">S.NO.</th>
+			<th class="tableengger">ENGLISH<span style="margin-left:15px"><img src="images/eng.png" width='50px', height='30px'></img></span></th> 
+			<th class="tableengger">GERMAN<span style="margin-left:15px"><img src="images/ger.png" width='50px', height='30px'></img></span></th> 
+		</tr>
+		<tr id="rowa1">
+			<td id="rowa1col1" class="tablerowsno"></td>
+			<td id="rowa1col2"></td>
+			<td id="rowa1col3"></td>
+		</tr>
+		<tr id="rowa2">
+			<td id="rowa2col1" class="tablerowsno"></td>
+			<td id="rowa2col2"></td>
+			<td id="rowa2col3"></td>
+		</tr>	
+		<tr id="rowa3">
+			<td id="rowa3col1" class="tablerowsno"></td>
+			<td id="rowa3col2"></td>
+			<td id="rowa3col3"></td>
+		</tr>
+		<tr id="rowa4">
+			<td id="rowa4col1" class="tablerowsno"></td>
+			<td id="rowa4col2"></td>
+			<td id="rowa4col3"></td>
+		</tr>
+		<tr id="rowa5">
+			<td id="rowa5col1" class="tablerowsno"></td>
+			<td id="rowa5col2"></td>
+			<td id="rowa5col3"></td>
+		</tr>
+		<tr id="rowa6">
+			<td id="rowa6col1" class="tablerowsno"></td>
+			<td id="rowa6col2"></td>
+			<td id="rowa6col3"></td>
+		</tr>
+		<tr id="rowa7">
+			<td id="rowa7col1" class="tablerowsno"></td>
+			<td id="rowa7col2"></td>
+			<td id="rowa7col3"></td>
+		</tr>
+		<tr id="rowa8">
+			<td id="rowa8col1" class="tablerowsno"></td>
+			<td id="rowa8col2"></td>
+			<td id="rowa8col3"></td>
+		</tr>
+		<tr id="rowa9">
+			<td id="rowa9col1" class="tablerowsno"></td>
+			<td id="rowa9col2"></td>
+			<td id="rowa9col3"></td>
+		</tr>
+		<tr id="rowa10">
+			<td id="rowa10col1" class="tablerowsno"></td>
+			<td id="rowa10col2"></td>
+			<td id="rowa10col3"></td>
+		</tr>
+	</table>
+	
+	<div style="margin-top:10px;">		
+		<button onclick="displaytablea();myFunctionfirsta();firstFunctiona();" id="incdeca">First &nbsp;</button>		
+		<button onclick="displaytablea();myFunctiondeca();updatetablea();" id="deca">⫷ &nbsp; </button>
+
+		<input type="number" id="alevel" value="1" min="1" style="border: 1px solid #ccc;border-radius:4px;font-size:12px;width:50px;height:16px;text-align:center;box-sizing: border-box;" readonly></input>
+		<span id="totalpagesdispa">	</span>
+		<button onclick="displaytablea();myFunctioninca();updatetablea();" id="inca">&nbsp; ⫸</button>
+		<button onclick="displaytablea();myFunctionlasta();lastfunctiona();" id="incdeca">Last &nbsp;</button>
+	</div>	
+	<br><br>
+</div>
+	
 		</center>
 	<script>
 		function displaytable()
@@ -214,9 +288,23 @@
 				document.getElementById(idgenrowcol3).style.display="none";
 			}
 		}
+		function displaytablea()
+		{
+			for (var abca = 0; abca < 10; abca++)
+			{
+				
+				var idgenrowcol1 = "rowa".concat(abca+1);
+				document.getElementById(idgenrowcol1).style.display="none";
+				var idgenrowcol2 = "rowa".concat(abca+1);
+				document.getElementById(idgenrowcol2).style.display="none";		
+				var idgenrowcol3 = "rowa".concat(abca+1);
+				document.getElementById(idgenrowcol3).style.display="none";
+				console.log(123456);
+			}
+		}
 	</script>
-	<script src="js/tablelistJS.js"></script>	
-
+		<script src="js/tablelistJS.js"></script>	
+		<script src="js/searchjs.js"></script>
 	</body>
 	</center>
 </html>
