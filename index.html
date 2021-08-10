@@ -33,10 +33,20 @@
 			<!--<a href="admin.html" id="hiadmin">ADMIN LOGIN</a>-->
 			<a href="javascript:void(0);" class="icon" onclick="topnavbar()">☰</a>
 		</div>
-		
 
-		<center>	
-		<div class="autocomplete" style="margin-top:30px;">
+
+		<center>
+		<div style="margin-top:20px;margin-bottom:0px;">
+		<button onclick="typevalue('ä')">ä</button>
+		<button onclick="typevalue('ö')">ö</button>
+		<button onclick="typevalue('ü')">ü</button>
+		<button onclick="typevalue('ß')">ß</button>
+		<button onclick="typevalue('Ä')">Ä</button>
+		<button onclick="typevalue('Ö')">Ö</button>
+		<button onclick="typevalue('Ü')">Ü</button>
+		</div>
+			
+		<div class="autocomplete" style="margin-top:0px;">
 		
 		<form method="post" id="contact-form">
 			<input id="myInput" class="inputtext" type="text" name="myCountry" placeholder="Type English Word to Search" autocomplete='off'></input>
@@ -47,6 +57,7 @@
 		</center>
 		
 		<!-- <script src="js/wordsearchengtoger.js"></script> -->
+		<script src="js/typejs.js"></script>
 		<script src="js/firebasedict.js"></script>
 		<script src="js/autocompletejs.js"></script>
 		<script src="js/engwordslistjs.js"></script>
