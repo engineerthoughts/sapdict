@@ -11,7 +11,7 @@ function opennav(mainid, optionid)
 	{
 		tempmainid = 'qa'+i;
 		tempoptionid = 's'+i;
-		console.log(tempoptionid);
+		//console.log(tempoptionid);
 		
 		if(tempmainid == mainid)
 		{

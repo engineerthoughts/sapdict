@@ -7,21 +7,28 @@ function submittest()
 	{
 		incsai = sai+1;
 		enteredanswers[sai] = document.getElementById('answer'+incsai).value;
-		console.log(enteredanswers);
+		//console.log(enteredanswers);
 
 	}
-	console.log(correctanswers);
+	//console.log(correctanswers);
 
 	
 	for (j=0;j<10;j++)
 	{
+		var opta = "optiona"+(j+1);
+		var optb = "optionb"+(j+1);
+		var optc = "optionc"+(j+1);
+		document.getElementById(opta).disabled = true;
+		document.getElementById(optb).disabled = true;
+		document.getElementById(optc).disabled = true;
+		
 		k=j+1;
 		if(enteredanswers[j] != "")
 		{
 			if(correctanswers[j] == enteredanswers[j])
 			{
 				countans = countans + 1;
-				console.log(enteredanswers[j]);
+				//console.log(enteredanswers[j]);
 				document.getElementById('option'+enteredanswers[j]+k).style.border = "2px solid #30eb23";
 				document.getElementById('s'+k).style.border = "2px solid #30eb23";
 			}
