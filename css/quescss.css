@@ -15,7 +15,11 @@
 {
 	padding:5px;
 }
-
+.questdesc
+{
+	width:50%;
+	text-align:justify;
+}
 .nextbtn
 {
 	width:75px;
@@ -48,4 +52,12 @@
 	padding:5px;
 	margin-top:5px;
 	margin-left:5px;
+}
+@media screen and (max-width: 600px) 
+{
+
+.questdesc
+{
+	width:95%;
+}
 }

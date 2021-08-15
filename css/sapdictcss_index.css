@@ -37,6 +37,11 @@ body {
   cursor: pointer;
 }
 
+#EnglishwordTab1, #GermanwordTab1
+{
+	font-weight: bold;
+}
+
 /*Table CSS*/
 #Dicresults {
   margin-top:20px;
