@@ -29,7 +29,7 @@ var inputques = [
 ['Müller und Julia sind … Studenten.','keinen','keine','kein','b'],
 ['Es ist … Haus.','keines','kein','keine','b'],
 ['… Buch ist langweilig.','der','das','die','b'],
-['Transaktion … nicht.','funktionierst','funktioniertet','fumtioniert','c'],
+['Transaktion … nicht.','funktionierst','funktioniertet','funktioniert','c'],
 ['Scanner … nach Nummer.','suchst','sucht','suchen','b'],
 ['Sie … eine E-Mail …','haben…bekammen','hast…bekommen','haben…bekommen','c'],
 ['Wir … Beleg senden.','werden','waren','wurden','a'],
