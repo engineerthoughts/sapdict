@@ -11,14 +11,44 @@
 		<link rel="stylesheet" type="text/css" href="css/sapdictcss_index.css">	
 		<!--<link rel="stylesheet" type="text/css" href="css/textboxsearch.css">-->
 		<link rel="stylesheet" type="text/css" href="css/autocomplete.css">
+		<link rel="stylesheet" type="text/css" href="css/quescss.css">
 		<script src="js/sapdictjs_navbar.js"></script>
 		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		
+		<style>
+		#overlay 
+		{
+		  position: fixed;
+		  display: none;
+		  width: 100%;
+		  height: 100%;
+		  top: 0;
+		  left: 0;
+		  right: 0;
+		  bottom: 0;
+		  background-color: rgba(0,0,0,0.90);
+		  z-index: 2;
+		  cursor: pointer;
+		}
 
+		#text
+		{
+		  position: absolute;
+		  top: 50%;
+		  left: 50%;
+		  font-size: 16px;
+		  color: white;
+		  transform: translate(-50%,-50%);
+		  -ms-transform: translate(-50%,-50%);
+		}
+		</style>
 		
 	</head>
 	<body>
-		
+		<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/ta_IN/sdk.js#xfbml=1&version=v11.0" nonce="duWtghRx"></script>
+
 	<center>	
 		<!--<div class="indextop">
 			<img class="innerindextop" src="images/sapdictlogo.PNG" width='60px', height='60px'></img>
@@ -28,8 +58,8 @@
 		<div class="homeindexmenuclass" id="idhomeindexmenu">
 			<a href="index.html" class="active">HOME</a>
 			<a href="question.html">GERMAN QUIZ</a>
-			<a href="#about">ABOUT US</a>
-			<a href="#contact">DISCLAIMER</a>
+			<a href="aboutus.html">ABOUT US</a>
+			<a href="disclaimer.html">TERMS</a>
 			<!--<a href="admin.html" id="hiadmin">ADMIN LOGIN</a>-->
 			<a href="javascript:void(0);" class="icon" onclick="topnavbar()">☰</a>
 		</div>
@@ -37,6 +67,7 @@
 
 		<center>
 		<div style="margin-top:20px;margin-bottom:0px;">
+		German Special Characters:<br>
 		<button onclick="typevalue('ä')">ä</button>
 		<button onclick="typevalue('ö')">ö</button>
 		<button onclick="typevalue('ü')">ü</button>
@@ -49,9 +80,9 @@
 		<div class="autocomplete" style="margin-top:0px;">
 		
 		<form method="post" id="contact-form">
-			<input id="myInput" class="inputtext" type="text" name="myCountry" placeholder="Type English Word to Search" autocomplete='off'></input>
+			<input id="myInput" class="inputtext" type="text" name="myCountry" placeholder="Enter the Word to Search" autocomplete='off'></input>
 			<span>
-			<button type = "submit" id = "gobuttonid" class="GoButton" onclick="engtogerfun();wordsearchs();">SEARCH 🔍</button></span>
+			<button type = "submit" id = "gobuttonid" class="GoButton" onclick="engtogerfun();wordsearchs();updatewaurl();">SEARCH 🔍</button></span>
 		</form>
 		</div>
 		</center>
@@ -286,6 +317,8 @@
 </div>
 	
 		</center>
+		
+		
 	<script>
 		function displaytable()
 		{
@@ -316,6 +349,61 @@
 	</script>
 		<script src="js/tablelistJS.js"></script>	
 		<script src="js/searchjs.js"></script>
+		
+		<p class="questdesc">
+		Glossap.de web site has been designed with intention to help those, who want to know the SAP terminology of <span style="color:#004FFF">English/German words.</span> This is fully based on our knowledge on SAP terms gained from real time experience. In this site you can find almost all the exact <span style="color:#004FFF">SAP terminologies </span>you look for. Translations of SAP terms, words are constantly reviewed to avoid all possible errors. However, we cannot warrant full correctness of all contents. While using this site, you agree to have read and accepted our terms of use, cookie and privacy policy. SAP and the SAP logo are registered trademarks of SAP SE. This web site is not sponsored by, affiliated with, or approved by SAP SE.
+
+		<br><br>Glossap.de also offers you a page for<span style="color:#004FFF"> German quiz,</span> to test your basic German language knowledge. With the help of the quiz, you can decide which level German <span style="color:#004FFF">(A1, A2, B1 ...)</span> you are now capable of. The purpose is to help you ensure that you have both German language and SAP terminology skills. A double edged sword.
+
+		<br><br>In the menu<span style="color:#004FFF"> "SAP jobs" </span>in our Glossap.de you can find the requirements to get a SAP based job in German speaking countries (<a href="https://en.wikipedia.org/wiki/Germany" target="_blank">Germany</a>, <a href="https://en.wikipedia.org/wiki/Austria" target="_blank">Austria</a> and <a href="https://en.wikipedia.org/wiki/Switzerland" target="_blank">Switzerland</a> - <span style="color:red">DACH</span>).
+		</p>
+		
+		Share on: 
+		<div class="fb-share-button" data-href="https://engineerthoughts.github.io/sapdict/" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fengineerthoughts.github.io%2Fsapdict%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">share</a></div>
+		<!-- <img src="images/icon/fb.png" width="30px" height="30px"></img> -->
+		<a id="whatsid" href="https://api.whatsapp.com/send?text=https://www.glosssap.de" target="_top"><img src="images/icon/wa.png" width="35px" height="35px"></img></a>
+		<a id="emailid" href="mailto:sapdic@gmail.com?subject=I%20would%20like%20to%20Learn%20German.&body=my%20Contact%20Details%20are"><img src="images/icon/gm.png" width="35px" height="35px"></img></a>
+<br><br><br>
+		
+	<div id="overlay">
+		<div id="text">Your privacy
+			By clicking "Accept", 
+			you agree Glossap.de can store basic cookies on your device.<br>
+			<button onclick="off()">Accept</button>
+			<button onclick="off()">Deny</button>
+		</div>
+	</div>
+		
+	<script>
+	document.getElementById("whatsid").href = "https://api.whatsapp.com/send?text="+window.location.href;
+	document.getElementById("emailid").href = "mailto:sapdic@gmail.com?subject=I%20would%20like%20to%20Learn%20German.&body="+window.location.href;
+	console.log("https://api.whatsapp.com/send?text="+window.location.href);
+	function updatewaurl()
+	{
+	document.getElementById("whatsid").href = "https://api.whatsapp.com/send?text="+window.location.href;
+	document.getElementById("emailid").href = "mailto:sapdic@gmail.com?subject=I%20would%20like%20to%20Learn%20German.&body="+window.location.href;
+	console.log("https://api.whatsapp.com/send?text="+window.location.href);
+	}
+		function on() 
+		{
+		  document.getElementById("overlay").style.display = "block";
+		}	
+		function off() 
+		{
+		  document.getElementById("overlay").style.display = "none";
+		}
+		var cookieval = localStorage.getItem("sapcookie");
+			if (typeof(Storage) !== "undefined" && cookieval != "1") 
+			  {
+			  // Store
+			  localStorage.setItem("sapcookie", "1");
+			  on();
+			  }
+		   else 
+		    {
+			  console.log("Sorry, your browser does not support Cookies...");
+			}
+	</script>
 	</body>
 	</center>
 </html>
